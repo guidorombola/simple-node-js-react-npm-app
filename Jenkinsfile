@@ -9,10 +9,21 @@ pipeline {
         cron('*/5 * * * *')
     }
     stages {
-        stage('Build') { 
+        stage('Install') { 
             steps {
                 sh 'npm install' 
             }
         }
+        stage('Build') { 
+            steps {
+                sh 'npm build' 
+            }
+        }
+        stage('Test') { 
+            steps {
+                sh 'npm test' 
+            }
+        }
     }
+    
 }
